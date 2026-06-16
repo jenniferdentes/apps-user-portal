@@ -56,7 +56,7 @@ const portalTheme = createTheme({
         },
         background: {
           default: '#ffffff',
-          paper:   '#fcfbfd',
+          paper:   '#f7f8fc',
         },
         divider: '#eaecf0',
         action: {
@@ -116,7 +116,7 @@ const portalTheme = createTheme({
         },
         background: {
           default: '#222629',
-          paper:   '#2e3234',
+          paper:   '#15191c',
         },
         divider: '#313538',
         action: {
@@ -132,7 +132,7 @@ const portalTheme = createTheme({
   },
 
   typography: {
-    fontFamily: '"Geist", "Inter", system-ui, sans-serif',
+    fontFamily: '"Inter", system-ui, sans-serif',
     fontSize: 14,
     fontWeightLight: 300, fontWeightRegular: 400, fontWeightMedium: 500, fontWeightBold: 600,
     h1: { fontSize: '2rem',     fontWeight: 600, lineHeight: 1.2 },
