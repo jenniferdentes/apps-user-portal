@@ -13,7 +13,6 @@ export default function Header() {
       style={{
         left: isDesktop ? (expanded ? 238 : 68) : 0,
         backgroundColor: 'var(--portal-bg-default)',
-        borderBottom: '1px solid var(--portal-divider)',
       }}
     >
       {/* Hamburger — mobile only */}
