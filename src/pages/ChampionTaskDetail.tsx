@@ -40,7 +40,7 @@ export default function ChampionTaskDetail() {
   if (!task) {
     return (
       <Layout>
-        <div className="px-6 py-6">
+        <div className="px-4 py-4 sm:px-6 sm:py-6">
           <p className="text-[var(--mui-palette-text-secondary)]">Task not found.</p>
           <Link to="/champion-tasks" className="mt-4 text-[var(--mui-palette-primary-main)] text-sm font-medium no-underline block">
             ← Back to Champion Tasks
@@ -68,9 +68,9 @@ export default function ChampionTaskDetail() {
 
   return (
     <Layout>
-      <div className="px-6 py-5 w-full flex flex-col gap-4">
+      <div className="px-4 py-4 sm:px-6 sm:py-5 w-full flex flex-col gap-4">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-[var(--mui-palette-text-secondary)]">
+        <nav className="flex items-center gap-2 text-sm text-[var(--mui-palette-text-secondary)] flex-wrap">
           <Link to="/champion-tasks" className="no-underline text-[var(--mui-palette-text-secondary)] hover:text-[var(--mui-palette-text-primary)] transition-colors">
             Champion Tasks
           </Link>
@@ -79,33 +79,31 @@ export default function ChampionTaskDetail() {
         </nav>
 
         {/* Header card */}
-        <div className="bg-[var(--mui-palette-background-paper)] border border-[var(--mui-palette-divider)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] px-4 py-3 flex items-center gap-4">
+        <div className="bg-[var(--mui-palette-background-paper)] border border-[var(--mui-palette-divider)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] px-4 py-3 flex items-center gap-3 sm:gap-4">
           <AppLogo name={app?.name ?? task.appName} logoColor={app?.logoColor ?? '#616a7e'} withBorder />
           <div className="flex-1 min-w-0">
-            <h1 className="text-base font-semibold text-[var(--mui-palette-text-primary)] leading-[1.5] tracking-[0.1px]">
+            <h1 className="text-sm sm:text-base font-semibold text-[var(--mui-palette-text-primary)] leading-[1.5] tracking-[0.1px] truncate">
               {taskLabel} {task.appName}
             </h1>
-            <div className="flex items-center gap-3 mt-0.5">
+            <div className="flex items-center gap-2 sm:gap-3 mt-0.5 flex-wrap">
               <span className="text-xs text-[var(--mui-palette-text-secondary)]">{task.dueDate}</span>
-              <span className="text-[var(--portal-divider-dark)]">·</span>
+              <span className="text-[var(--portal-divider-dark)] hidden sm:inline">·</span>
               <div className="flex items-center gap-1.5">
                 <Avatar name={task.userName} size="sm" />
                 <span className="text-xs text-[var(--mui-palette-text-secondary)]">{task.userName}</span>
               </div>
             </div>
           </div>
-          <button className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 border border-[var(--portal-secondary-outlined-border)] bg-[var(--portal-elevation-1)] rounded-lg text-sm font-medium text-[var(--mui-palette-secondary-main)] hover:bg-[var(--portal-primary-states-selected)] transition-colors">
-            Open App
-            <ExternalLink size={14} strokeWidth={1.8} />
+          <button className="shrink-0 hidden sm:flex items-center gap-1.5 px-3 py-1.5 border border-[var(--portal-secondary-outlined-border)] bg-[var(--portal-elevation-1)] rounded-lg text-sm font-medium text-[var(--mui-palette-secondary-main)] hover:bg-[var(--portal-primary-states-selected)] transition-colors">
+            Open App <ExternalLink size={14} strokeWidth={1.8} />
           </button>
         </div>
 
-        {/* Two-column body */}
-        <div className="flex gap-4 items-start">
+        {/* Body — stacked on mobile, side-by-side on md+ */}
+        <div className="flex flex-col md:flex-row gap-4 items-start">
           {/* Left: tabbed card */}
-          <div className="flex-1 min-w-0 bg-[var(--mui-palette-background-paper)] border border-[var(--mui-palette-divider)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] flex flex-col">
-            {/* Tab bar */}
-            <div className="flex border-b border-[var(--mui-palette-divider)] px-5">
+          <div className="w-full flex-1 min-w-0 bg-[var(--mui-palette-background-paper)] border border-[var(--mui-palette-divider)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] flex flex-col">
+            <div className="flex border-b border-[var(--mui-palette-divider)] px-4 sm:px-5">
               {(['checklist', 'instructions'] as const).map((tab) => (
                 <button
                   key={tab}
@@ -121,33 +119,20 @@ export default function ChampionTaskDetail() {
               ))}
             </div>
 
-            {/* Tab content */}
-            <div className="p-5">
+            <div className="p-4 sm:p-5">
               {activeTab === 'checklist' && (
                 <div className="flex flex-col gap-4">
-                  {/* Progress */}
                   <div className="flex items-center gap-3">
                     <div className="flex-1 h-1.5 rounded-full bg-[var(--portal-elevation-1)] overflow-hidden">
-                      <div
-                        className="h-full bg-[var(--mui-palette-success-main)] rounded-full transition-all duration-300"
-                        style={{ width: `${pct}%` }}
-                      />
+                      <div className="h-full bg-[var(--mui-palette-success-main)] rounded-full transition-all duration-300" style={{ width: `${pct}%` }} />
                     </div>
                     <span className="text-xs font-semibold text-[var(--mui-palette-text-secondary)] shrink-0">{completed}/{total} done</span>
                   </div>
-
-                  {/* Steps */}
                   <div className="flex flex-col divide-y divide-[var(--mui-palette-divider)]">
                     {task.steps.map((step) => (
                       <div key={step.id} className="flex items-center gap-2 py-2 first:pt-0 last:pb-0">
                         <StepCheckbox checked={step.completed} onChange={() => toggleStep(step.id)} />
-                        <span
-                          className={`flex-1 text-sm leading-[1.5] ${
-                            step.completed
-                              ? 'text-[var(--mui-palette-text-disabled)] line-through'
-                              : 'text-[var(--mui-palette-text-primary)] font-medium'
-                          }`}
-                        >
+                        <span className={`flex-1 text-sm leading-[1.5] ${step.completed ? 'text-[var(--mui-palette-text-disabled)] line-through' : 'text-[var(--mui-palette-text-primary)] font-medium'}`}>
                           {step.title}
                         </span>
                       </div>
@@ -158,50 +143,40 @@ export default function ChampionTaskDetail() {
 
               {activeTab === 'instructions' && (
                 <div className="flex flex-col gap-4">
-                  {/* Video */}
                   <div className="flex justify-center">
-                    <div className="relative w-[190px] h-[130px] rounded-lg border-2 border-[var(--mui-palette-divider)] overflow-hidden bg-gradient-to-br from-[#c084fc] to-[#818cf8] flex items-center justify-center shadow-[0px_4px_8px_rgba(16,24,40,0.1)]">
+                    <div className="relative w-full max-w-[190px] h-[130px] rounded-lg border-2 border-[var(--mui-palette-divider)] overflow-hidden bg-gradient-to-br from-[#c084fc] to-[#818cf8] flex items-center justify-center shadow-[0px_4px_8px_rgba(16,24,40,0.1)]">
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                       <div className="relative bg-black/60 rounded-full p-2.5 flex items-center justify-center">
                         <Play size={28} strokeWidth={0} fill="white" className="ml-0.5" />
                       </div>
                     </div>
                   </div>
-
-                  {/* Numbered steps */}
                   <div className="flex flex-col gap-3">
                     {task.instructions.map((step, i) => (
                       <div key={step.id} className="flex flex-col gap-1.5">
                         <div className="flex items-center gap-2">
-                          <span className="w-[18px] h-[18px] bg-[var(--mui-palette-info-main)] rounded-full flex items-center justify-center text-white text-[10px] font-semibold shrink-0 leading-none">
-                            {i + 1}
-                          </span>
-                          <span className="text-sm font-semibold text-[var(--mui-palette-text-primary)] leading-[1.57]">
-                            {step.title}
-                          </span>
+                          <span className="w-[18px] h-[18px] bg-[var(--mui-palette-info-main)] rounded-full flex items-center justify-center text-white text-[10px] font-semibold shrink-0 leading-none">{i + 1}</span>
+                          <span className="text-sm font-semibold text-[var(--mui-palette-text-primary)] leading-[1.57]">{step.title}</span>
                         </div>
                         <ol className="list-decimal ml-[26px] flex flex-col gap-0.5 text-sm text-[var(--mui-palette-text-secondary)] leading-[1.5]">
-                          {step.subSteps.map((sub, j) => (
-                            <li key={j}>{sub}</li>
-                          ))}
+                          {step.subSteps.map((sub, j) => (<li key={j}>{sub}</li>))}
                         </ol>
                       </div>
                     ))}
                   </div>
-
                 </div>
               )}
             </div>
           </div>
 
           {/* Right: Task Info */}
-          <div className="w-[300px] shrink-0 bg-[var(--mui-palette-background-paper)] border border-[var(--mui-palette-divider)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] p-4 flex flex-col gap-4">
+          <div className="w-full md:w-[280px] lg:w-[300px] shrink-0 bg-[var(--mui-palette-background-paper)] border border-[var(--mui-palette-divider)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] p-4 flex flex-col gap-4">
             <div className="flex items-start justify-between gap-2">
               <h2 className="text-sm font-semibold text-[var(--mui-palette-text-primary)] tracking-[0.1px]">Task Info</h2>
               <AppLogo name={app?.name ?? task.appName} logoColor={app?.logoColor ?? '#616a7e'} size="sm" withBorder />
             </div>
 
-            <div className="flex flex-col gap-3 text-sm">
+            <div className="grid grid-cols-2 md:grid-cols-1 gap-3 text-sm">
               <div className="flex flex-col gap-0.5">
                 <span className="text-[10px] font-semibold text-[var(--mui-palette-text-disabled)] uppercase tracking-wider">Task</span>
                 <span className="text-[var(--mui-palette-text-primary)] leading-[1.43]">{taskLabel} {task.appName}</span>
@@ -221,16 +196,12 @@ export default function ChampionTaskDetail() {
                 <span className="text-[10px] font-semibold text-[var(--mui-palette-text-disabled)] uppercase tracking-wider">Email</span>
                 <span className="text-[var(--mui-palette-text-secondary)] leading-[1.43] break-all">{task.userEmail}</span>
               </div>
-              <div className="flex flex-col gap-0.5">
+              <div className="flex flex-col gap-0.5 col-span-2 md:col-span-1">
                 <span className="text-[10px] font-semibold text-[var(--mui-palette-text-disabled)] uppercase tracking-wider">Link to App</span>
-                <a
-                  href={app?.appUrl ?? '#'}
-                  target="_blank"
-                  rel="noreferrer"
+                <a href={app?.appUrl ?? '#'} target="_blank" rel="noreferrer"
                   className="no-underline inline-flex items-center gap-1 font-medium text-[var(--mui-palette-primary-main)] hover:opacity-75 transition-opacity"
                 >
-                  {task.appName}
-                  <ExternalLink size={12} strokeWidth={1.8} />
+                  {task.appName} <ExternalLink size={12} strokeWidth={1.8} />
                 </a>
               </div>
             </div>

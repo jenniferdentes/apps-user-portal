@@ -16,30 +16,26 @@ export default function UsersTab({ app }: { app: App }) {
 
   return (
     <div>
-      {/* Action bar */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className="relative">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div className="flex flex-wrap items-center gap-3 flex-1 min-w-0">
+          <div className="relative flex-1 min-w-[160px]">
             <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--mui-palette-text-secondary)]" />
             <input
               type="text"
               placeholder="Search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-9 pr-4 py-2 border border-[var(--portal-divider-dark)] rounded-lg text-sm text-[var(--mui-palette-text-primary)] placeholder:text-[var(--mui-palette-text-disabled)] focus:outline-none focus:ring-2 focus:ring-[var(--portal-primary-states-focus-visible)] w-[220px] bg-[var(--mui-palette-background-paper)]"
+              className="w-full pl-9 pr-4 py-2 border border-[var(--portal-divider-dark)] rounded-lg text-sm text-[var(--mui-palette-text-primary)] placeholder:text-[var(--mui-palette-text-disabled)] focus:outline-none focus:ring-2 focus:ring-[var(--portal-primary-states-focus-visible)] bg-[var(--mui-palette-background-paper)]"
             />
           </div>
-          <div className="relative">
+          <div className="relative hidden sm:block">
             <select className="appearance-none pl-3 pr-8 py-2 border border-[var(--portal-divider-dark)] rounded-lg text-sm text-[var(--mui-palette-text-primary)] bg-[var(--mui-palette-background-paper)] focus:outline-none focus:ring-2 focus:ring-[var(--portal-primary-states-focus-visible)] cursor-pointer">
               <option>All sites</option>
               <option>Monmouth Builders</option>
               <option>Tech Solutions Inc.</option>
               <option>Creative Studio</option>
             </select>
-            <ChevronDown
-              size={14}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--mui-palette-text-secondary)] pointer-events-none"
-            />
+            <ChevronDown size={14} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--mui-palette-text-secondary)] pointer-events-none" />
             <span className="absolute -top-2.5 left-2.5 bg-[var(--mui-palette-background-paper)] px-1 text-xs text-[var(--mui-palette-text-secondary)]">
               Filter by sites
             </span>
@@ -47,53 +43,52 @@ export default function UsersTab({ app }: { app: App }) {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-[var(--mui-palette-primary-main)] text-white text-sm font-medium rounded-lg hover:bg-[var(--mui-palette-primary-dark)] transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-[var(--mui-palette-primary-main)] text-white text-sm font-medium rounded-lg hover:bg-[var(--mui-palette-primary-dark)] transition-colors shrink-0"
         >
           <Plus size={15} />
           Add Users
         </button>
       </div>
 
-      {/* Table */}
       <div className="bg-[var(--mui-palette-background-paper)] rounded-xl border border-[var(--mui-palette-divider)] overflow-hidden">
         {filtered.length > 0 ? (
           <>
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-[var(--mui-palette-divider)]">
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)]">Name</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)]">Site</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)]">Job Title</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)]">Departments</th>
-                  <th className="w-[72px] bg-[var(--portal-elevation-1)]" />
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((user) => (
-                  <tr key={user.id} className="border-b border-[var(--mui-palette-divider)] last:border-0 hover:bg-[var(--portal-primary-states-hover)] transition-colors">
-                    <td className="px-4 py-4">
-                      <div className="flex items-center gap-3">
-                        <Avatar name={user.name} size="sm" />
-                        <div>
-                          <div className="text-[var(--mui-palette-text-primary)] font-medium text-sm">{user.name}</div>
-                          <div className="text-[var(--mui-palette-text-secondary)] text-xs truncate max-w-[200px]">{user.email}</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="px-4 py-4 text-[var(--mui-palette-text-primary)] text-sm">{user.site}</td>
-                    <td className="px-4 py-4 text-[var(--mui-palette-text-primary)] text-sm">{user.jobTitle}</td>
-                    <td className="px-4 py-4 text-[var(--mui-palette-text-primary)] text-sm">
-                      {user.departments.join(', ')}
-                    </td>
-                    <td className="px-4 py-4 text-center">
-                      <button className="text-red-400 hover:text-red-600 transition-colors p-1">
-                        <Trash2 size={16} strokeWidth={1.5} />
-                      </button>
-                    </td>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[500px]">
+                <thead>
+                  <tr className="border-b border-[var(--mui-palette-divider)]">
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)]">Name</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)] hidden md:table-cell">Site</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)] hidden sm:table-cell">Job Title</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)] hidden lg:table-cell">Departments</th>
+                    <th className="w-[72px] bg-[var(--portal-elevation-1)]" />
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {filtered.map((user) => (
+                    <tr key={user.id} className="border-b border-[var(--mui-palette-divider)] last:border-0 hover:bg-[var(--portal-primary-states-hover)] transition-colors">
+                      <td className="px-4 py-4">
+                        <div className="flex items-center gap-3">
+                          <Avatar name={user.name} size="sm" />
+                          <div>
+                            <div className="text-[var(--mui-palette-text-primary)] font-medium text-sm">{user.name}</div>
+                            <div className="text-[var(--mui-palette-text-secondary)] text-xs truncate max-w-[200px]">{user.email}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 py-4 text-[var(--mui-palette-text-primary)] text-sm hidden md:table-cell">{user.site}</td>
+                      <td className="px-4 py-4 text-[var(--mui-palette-text-primary)] text-sm hidden sm:table-cell">{user.jobTitle}</td>
+                      <td className="px-4 py-4 text-[var(--mui-palette-text-primary)] text-sm hidden lg:table-cell">{user.departments.join(', ')}</td>
+                      <td className="px-4 py-4 text-center">
+                        <button className="text-red-400 hover:text-red-600 transition-colors p-1">
+                          <Trash2 size={16} strokeWidth={1.5} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             <div className="flex items-center justify-end px-4 py-3 border-t border-[var(--mui-palette-divider)]">
               <span className="text-sm text-[var(--mui-palette-text-secondary)]">
                 Rows per page: <span className="font-medium text-[var(--mui-palette-text-primary)]">10 ▾</span>
