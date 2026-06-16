@@ -178,7 +178,7 @@ export default function Sidebar() {
     <>
       {/* Desktop sidebar — hidden on mobile */}
       <aside
-        className="hidden md:flex fixed left-0 top-0 h-screen bg-[var(--mui-palette-background-paper)] border-r border-[var(--mui-palette-divider)] flex-col z-30 overflow-hidden transition-[width] duration-300 ease-in-out"
+        className="hidden md:flex fixed left-0 top-0 h-screen bg-[var(--portal-bg-paper)] border-r border-[var(--portal-divider)] flex-col z-30 overflow-hidden transition-[width] duration-300 ease-in-out"
         style={{ width: expanded ? 238 : 68 }}
       >
         <div

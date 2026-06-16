@@ -153,6 +153,9 @@ const portalTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: (theme) => ({
         ':root': {
+          '--portal-bg-default':    '#f7f8fc',
+          '--portal-bg-paper':      '#ffffff',
+          '--portal-divider':       '#eaecf0',
           '--portal-elevation-1':   '#f7f8fc',
           '--portal-bg-strong':     '#f0f2f9',
           '--portal-icon-base':     '#667085',
@@ -196,6 +199,9 @@ const portalTheme = createTheme({
           '--portal-color-new-blue':'#3c91ff',
         },
         '.dark': {
+          '--portal-bg-default':    '#222629',
+          '--portal-bg-paper':      '#15191c',
+          '--portal-divider':       '#313538',
           '--portal-elevation-1':   '#15191c',
           '--portal-bg-strong':     '#0f1214',
           '--portal-icon-base':     '#98a1b2',

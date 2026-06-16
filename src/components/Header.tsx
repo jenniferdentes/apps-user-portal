@@ -9,8 +9,12 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 right-0 h-[60px] md:h-[80px] bg-[var(--mui-palette-background-paper)] border-b border-[var(--mui-palette-divider)] shadow-[0px_1px_4px_rgba(16,24,40,0.06)] flex items-center justify-between md:justify-end px-4 md:px-6 gap-2 md:gap-3 z-20 transition-[left] duration-300 ease-in-out"
-      style={{ left: isDesktop ? (expanded ? 238 : 68) : 0 }}
+      className="fixed top-0 right-0 h-[60px] md:h-[80px] flex items-center justify-between md:justify-end px-4 md:px-6 gap-2 md:gap-3 z-20 transition-[left] duration-300 ease-in-out"
+      style={{
+        left: isDesktop ? (expanded ? 238 : 68) : 0,
+        backgroundColor: 'var(--portal-bg-paper)',
+        borderBottom: '1px solid var(--portal-divider)',
+      }}
     >
       {/* Hamburger — mobile only */}
       <button
