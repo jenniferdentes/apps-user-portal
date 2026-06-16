@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {
   Home,
@@ -212,13 +212,15 @@ export default function Sidebar() {
       <Drawer
         open={mobileOpen}
         onClose={toggleMobile}
-        PaperProps={{
-          sx: {
-            width: 260,
-            bgcolor: 'var(--mui-palette-background-paper)',
-            borderRight: '1px solid var(--mui-palette-divider)',
-            display: 'flex',
-            flexDirection: 'column',
+        slotProps={{
+          paper: {
+            sx: {
+              width: 260,
+              bgcolor: 'var(--mui-palette-background-paper)',
+              borderRight: '1px solid var(--mui-palette-divider)',
+              display: 'flex',
+              flexDirection: 'column',
+            },
           },
         }}
       >
