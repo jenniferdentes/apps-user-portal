@@ -55,7 +55,7 @@ const portalTheme = createTheme({
           disabled:  '#9aa2b2',
         },
         background: {
-          default: '#ffffff',
+          default: '#f7f8fc',
           paper:   '#ffffff',
         },
         divider: '#eaecf0',
