@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   const isDesktop = useMediaQuery('(min-width: 768px)')
 
   return (
-    <div className="min-h-screen bg-[var(--portal-bg-strong)]">
+    <div className="min-h-screen bg-[var(--mui-palette-background-default)]">
       <Sidebar />
       <Header />
       <main
