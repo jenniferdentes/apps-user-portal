@@ -1,30 +1,39 @@
 import type { AppStatus } from '../types'
 
-const STATUS_CONFIG: Record<AppStatus, { dot: string; text: string; bg: string; label: string }> = {
+const STATUS_CONFIG: Record<AppStatus, { dot: string; label: string; style: React.CSSProperties }> = {
   active: {
-    dot: 'bg-green-500',
-    text: 'text-green-800',
-    bg: 'bg-[#edfcf2]',
+    dot: 'bg-[var(--mui-palette-success-main)]',
     label: 'Active',
+    style: {
+      color: 'var(--portal-accent8-dark)',
+      backgroundColor: 'var(--portal-accent2)',
+    },
   },
   configuring: {
-    dot: 'bg-amber-500',
-    text: 'text-amber-700',
-    bg: 'bg-amber-50',
+    dot: 'bg-[var(--mui-palette-warning-main)]',
     label: 'Configuring',
+    style: {
+      color: 'var(--portal-accent1-dark)',
+      backgroundColor: 'var(--portal-accent1-light)',
+    },
   },
   inactive: {
-    dot: 'bg-gray-400',
-    text: 'text-gray-600',
-    bg: 'bg-gray-100',
+    dot: 'bg-[var(--portal-icon-subtle)]',
     label: 'Inactive',
+    style: {
+      color: 'var(--portal-icon-base)',
+      backgroundColor: 'var(--portal-elevation-1)',
+    },
   },
 }
 
 export default function StatusBadge({ status }: { status: AppStatus }) {
-  const { dot, text, bg, label } = STATUS_CONFIG[status]
+  const { dot, label, style } = STATUS_CONFIG[status]
   return (
-    <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold ${bg} ${text}`}>
+    <span
+      className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold"
+      style={style}
+    >
       <span className={`w-1.5 h-1.5 rounded-full ${dot}`} />
       {label}
     </span>

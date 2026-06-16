@@ -15,7 +15,9 @@ function StepCheckbox({ checked, onChange }: { checked: boolean; onChange: () =>
     >
       <div
         className={`w-5 h-5 rounded flex items-center justify-center border-2 transition-colors ${
-          checked ? 'bg-[#4338CA] border-[#4338CA]' : 'bg-white border-[#d0d5dd]'
+          checked
+            ? 'bg-[var(--mui-palette-primary-main)] border-[var(--mui-palette-primary-main)]'
+            : 'bg-[var(--mui-palette-background-paper)] border-[var(--portal-divider-dark)]'
         }`}
       >
         {checked && (
@@ -39,8 +41,8 @@ export default function ChampionTaskDetail() {
     return (
       <Layout>
         <div className="px-6 py-6">
-          <p className="text-[#616a7e]">Task not found.</p>
-          <Link to="/champion-tasks" className="mt-4 text-[#4338CA] text-sm font-medium no-underline block">
+          <p className="text-[var(--mui-palette-text-secondary)]">Task not found.</p>
+          <Link to="/champion-tasks" className="mt-4 text-[var(--mui-palette-primary-main)] text-sm font-medium no-underline block">
             ← Back to Champion Tasks
           </Link>
         </div>
@@ -68,31 +70,31 @@ export default function ChampionTaskDetail() {
     <Layout>
       <div className="px-6 py-5 w-full flex flex-col gap-4">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-[#616a7e]">
-          <Link to="/champion-tasks" className="no-underline text-[#616a7e] hover:text-[#202938] transition-colors">
+        <nav className="flex items-center gap-2 text-sm text-[var(--mui-palette-text-secondary)]">
+          <Link to="/champion-tasks" className="no-underline text-[var(--mui-palette-text-secondary)] hover:text-[var(--mui-palette-text-primary)] transition-colors">
             Champion Tasks
           </Link>
-          <span className="text-[#d0d5dd]">/</span>
-          <span className="text-[#202938]">{taskLabel} {task.appName}</span>
+          <span className="text-[var(--portal-divider-dark)]">/</span>
+          <span className="text-[var(--mui-palette-text-primary)]">{taskLabel} {task.appName}</span>
         </nav>
 
         {/* Header card */}
-        <div className="bg-white border border-[#eaecf0] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] px-4 py-3 flex items-center gap-4">
+        <div className="bg-[var(--mui-palette-background-paper)] border border-[var(--mui-palette-divider)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] px-4 py-3 flex items-center gap-4">
           <AppLogo name={app?.name ?? task.appName} logoColor={app?.logoColor ?? '#616a7e'} withBorder />
           <div className="flex-1 min-w-0">
-            <h1 className="text-base font-semibold text-[#202938] leading-[1.5] tracking-[0.1px]">
+            <h1 className="text-base font-semibold text-[var(--mui-palette-text-primary)] leading-[1.5] tracking-[0.1px]">
               {taskLabel} {task.appName}
             </h1>
             <div className="flex items-center gap-3 mt-0.5">
-              <span className="text-xs text-[#616a7e]">{task.dueDate}</span>
-              <span className="text-[#d0d5dd]">·</span>
+              <span className="text-xs text-[var(--mui-palette-text-secondary)]">{task.dueDate}</span>
+              <span className="text-[var(--portal-divider-dark)]">·</span>
               <div className="flex items-center gap-1.5">
                 <Avatar name={task.userName} size="sm" />
-                <span className="text-xs text-[#616a7e]">{task.userName}</span>
+                <span className="text-xs text-[var(--mui-palette-text-secondary)]">{task.userName}</span>
               </div>
             </div>
           </div>
-          <button className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 border border-[#d0d3e8] bg-[#f7f8fc] rounded-lg text-sm font-medium text-[#323767] hover:bg-[#eef0f9] transition-colors">
+          <button className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 border border-[var(--portal-secondary-outlined-border)] bg-[var(--portal-elevation-1)] rounded-lg text-sm font-medium text-[var(--mui-palette-secondary-main)] hover:bg-[var(--portal-primary-states-selected)] transition-colors">
             Open App
             <ExternalLink size={14} strokeWidth={1.8} />
           </button>
@@ -101,17 +103,17 @@ export default function ChampionTaskDetail() {
         {/* Two-column body */}
         <div className="flex gap-4 items-start">
           {/* Left: tabbed card */}
-          <div className="flex-1 min-w-0 bg-white border border-[#eaecf0] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] flex flex-col">
+          <div className="flex-1 min-w-0 bg-[var(--mui-palette-background-paper)] border border-[var(--mui-palette-divider)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] flex flex-col">
             {/* Tab bar */}
-            <div className="flex border-b border-[#eaecf0] px-5">
+            <div className="flex border-b border-[var(--mui-palette-divider)] px-5">
               {(['checklist', 'instructions'] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`py-3 px-1 mr-6 text-sm font-medium border-b-2 -mb-px transition-colors capitalize ${
                     activeTab === tab
-                      ? 'border-[#4338CA] text-[#4338CA]'
-                      : 'border-transparent text-[#616a7e] hover:text-[#202938]'
+                      ? 'border-[var(--mui-palette-primary-main)] text-[var(--mui-palette-primary-main)]'
+                      : 'border-transparent text-[var(--mui-palette-text-secondary)] hover:text-[var(--mui-palette-text-primary)]'
                   }`}
                 >
                   {tab}
@@ -125,23 +127,25 @@ export default function ChampionTaskDetail() {
                 <div className="flex flex-col gap-4">
                   {/* Progress */}
                   <div className="flex items-center gap-3">
-                    <div className="flex-1 h-1.5 rounded-full bg-[#f2f4f7] overflow-hidden">
+                    <div className="flex-1 h-1.5 rounded-full bg-[var(--portal-elevation-1)] overflow-hidden">
                       <div
-                        className="h-full bg-[#16b364] rounded-full transition-all duration-300"
+                        className="h-full bg-[var(--mui-palette-success-main)] rounded-full transition-all duration-300"
                         style={{ width: `${pct}%` }}
                       />
                     </div>
-                    <span className="text-xs font-semibold text-[#616a7e] shrink-0">{completed}/{total} done</span>
+                    <span className="text-xs font-semibold text-[var(--mui-palette-text-secondary)] shrink-0">{completed}/{total} done</span>
                   </div>
 
                   {/* Steps */}
-                  <div className="flex flex-col divide-y divide-[#f2f4f7]">
+                  <div className="flex flex-col divide-y divide-[var(--mui-palette-divider)]">
                     {task.steps.map((step) => (
                       <div key={step.id} className="flex items-center gap-2 py-2 first:pt-0 last:pb-0">
                         <StepCheckbox checked={step.completed} onChange={() => toggleStep(step.id)} />
                         <span
                           className={`flex-1 text-sm leading-[1.5] ${
-                            step.completed ? 'text-[#98a2b3] line-through' : 'text-[#202938] font-medium'
+                            step.completed
+                              ? 'text-[var(--mui-palette-text-disabled)] line-through'
+                              : 'text-[var(--mui-palette-text-primary)] font-medium'
                           }`}
                         >
                           {step.title}
@@ -156,7 +160,7 @@ export default function ChampionTaskDetail() {
                 <div className="flex flex-col gap-4">
                   {/* Video */}
                   <div className="flex justify-center">
-                    <div className="relative w-[190px] h-[130px] rounded-lg border-2 border-[#eaecf0] overflow-hidden bg-gradient-to-br from-[#c084fc] to-[#818cf8] flex items-center justify-center shadow-[0px_4px_8px_rgba(16,24,40,0.1)]">
+                    <div className="relative w-[190px] h-[130px] rounded-lg border-2 border-[var(--mui-palette-divider)] overflow-hidden bg-gradient-to-br from-[#c084fc] to-[#818cf8] flex items-center justify-center shadow-[0px_4px_8px_rgba(16,24,40,0.1)]">
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                       <div className="relative bg-black/60 rounded-full p-2.5 flex items-center justify-center">
                         <Play size={28} strokeWidth={0} fill="white" className="ml-0.5" />
@@ -169,14 +173,14 @@ export default function ChampionTaskDetail() {
                     {task.instructions.map((step, i) => (
                       <div key={step.id} className="flex flex-col gap-1.5">
                         <div className="flex items-center gap-2">
-                          <span className="w-[18px] h-[18px] bg-[#0288d1] rounded-full flex items-center justify-center text-white text-[10px] font-semibold shrink-0 leading-none">
+                          <span className="w-[18px] h-[18px] bg-[var(--mui-palette-info-main)] rounded-full flex items-center justify-center text-white text-[10px] font-semibold shrink-0 leading-none">
                             {i + 1}
                           </span>
-                          <span className="text-sm font-semibold text-[#202938] leading-[1.57]">
+                          <span className="text-sm font-semibold text-[var(--mui-palette-text-primary)] leading-[1.57]">
                             {step.title}
                           </span>
                         </div>
-                        <ol className="list-decimal ml-[26px] flex flex-col gap-0.5 text-sm text-[#616a7e] leading-[1.5]">
+                        <ol className="list-decimal ml-[26px] flex flex-col gap-0.5 text-sm text-[var(--mui-palette-text-secondary)] leading-[1.5]">
                           {step.subSteps.map((sub, j) => (
                             <li key={j}>{sub}</li>
                           ))}
@@ -191,39 +195,39 @@ export default function ChampionTaskDetail() {
           </div>
 
           {/* Right: Task Info */}
-          <div className="w-[300px] shrink-0 bg-white border border-[#eaecf0] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] p-4 flex flex-col gap-4">
+          <div className="w-[300px] shrink-0 bg-[var(--mui-palette-background-paper)] border border-[var(--mui-palette-divider)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] p-4 flex flex-col gap-4">
             <div className="flex items-start justify-between gap-2">
-              <h2 className="text-sm font-semibold text-[#202938] tracking-[0.1px]">Task Info</h2>
+              <h2 className="text-sm font-semibold text-[var(--mui-palette-text-primary)] tracking-[0.1px]">Task Info</h2>
               <AppLogo name={app?.name ?? task.appName} logoColor={app?.logoColor ?? '#616a7e'} size="sm" withBorder />
             </div>
 
             <div className="flex flex-col gap-3 text-sm">
               <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-semibold text-[#98a2b3] uppercase tracking-wider">Task</span>
-                <span className="text-[#202938] leading-[1.43]">{taskLabel} {task.appName}</span>
+                <span className="text-[10px] font-semibold text-[var(--mui-palette-text-disabled)] uppercase tracking-wider">Task</span>
+                <span className="text-[var(--mui-palette-text-primary)] leading-[1.43]">{taskLabel} {task.appName}</span>
               </div>
               <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-semibold text-[#98a2b3] uppercase tracking-wider">Date</span>
-                <span className="text-[#616a7e] leading-[1.43]">{task.dueDate}</span>
+                <span className="text-[10px] font-semibold text-[var(--mui-palette-text-disabled)] uppercase tracking-wider">Date</span>
+                <span className="text-[var(--mui-palette-text-secondary)] leading-[1.43]">{task.dueDate}</span>
               </div>
               <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-semibold text-[#98a2b3] uppercase tracking-wider">User</span>
+                <span className="text-[10px] font-semibold text-[var(--mui-palette-text-disabled)] uppercase tracking-wider">User</span>
                 <div className="flex items-center gap-1.5">
                   <Avatar name={task.userName} size="sm" />
-                  <span className="text-[#202938] leading-[1.43] truncate">{task.userName}</span>
+                  <span className="text-[var(--mui-palette-text-primary)] leading-[1.43] truncate">{task.userName}</span>
                 </div>
               </div>
               <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-semibold text-[#98a2b3] uppercase tracking-wider">Email</span>
-                <span className="text-[#616a7e] leading-[1.43] break-all">{task.userEmail}</span>
+                <span className="text-[10px] font-semibold text-[var(--mui-palette-text-disabled)] uppercase tracking-wider">Email</span>
+                <span className="text-[var(--mui-palette-text-secondary)] leading-[1.43] break-all">{task.userEmail}</span>
               </div>
               <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-semibold text-[#98a2b3] uppercase tracking-wider">Link to App</span>
+                <span className="text-[10px] font-semibold text-[var(--mui-palette-text-disabled)] uppercase tracking-wider">Link to App</span>
                 <a
                   href={app?.appUrl ?? '#'}
                   target="_blank"
                   rel="noreferrer"
-                  className="no-underline inline-flex items-center gap-1 font-medium text-[#3a3e75] hover:opacity-75 transition-opacity"
+                  className="no-underline inline-flex items-center gap-1 font-medium text-[var(--mui-palette-primary-main)] hover:opacity-75 transition-opacity"
                 >
                   {task.appName}
                   <ExternalLink size={12} strokeWidth={1.8} />

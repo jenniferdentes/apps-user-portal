@@ -16,7 +16,7 @@ export default function AppLogo({ name, logoColor, size = 'md', withBorder = fal
 
   return (
     <div
-      className={`${dim} flex items-center justify-center font-bold text-white shrink-0${withBorder ? ' border border-[#eaecf0]' : ''}`}
+      className={`${dim} flex items-center justify-center font-bold text-white shrink-0${withBorder ? ' border border-[var(--mui-palette-divider)]' : ''}`}
       style={{ backgroundColor: logoColor }}
     >
       {initials}

@@ -24,10 +24,10 @@ export default function CompanyApps() {
         {/* Page header */}
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h1 className="text-[#202938] text-3xl font-bold leading-tight">Company Apps</h1>
-            <p className="text-[#616a7e] text-sm mt-1">Quick access to all your business applications</p>
+            <h1 className="text-[var(--mui-palette-text-primary)] text-3xl font-bold leading-tight">Company Apps</h1>
+            <p className="text-[var(--mui-palette-text-secondary)] text-sm mt-1">Quick access to all your business applications</p>
           </div>
-          <button className="flex items-center gap-2 px-4 py-2.5 bg-[#1B2454] text-white text-sm font-medium rounded-lg hover:bg-[#151c44] transition-colors">
+          <button className="flex items-center gap-2 px-4 py-2.5 bg-[var(--mui-palette-primary-main)] text-white text-sm font-medium rounded-lg hover:bg-[var(--mui-palette-primary-dark)] transition-colors">
             <Plus size={16} />
             Get More Apps
           </button>
@@ -37,40 +37,39 @@ export default function CompanyApps() {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#616a7e]" />
+              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--mui-palette-text-secondary)]" />
               <input
                 type="text"
                 placeholder="Search for an app"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm text-[#202938] placeholder:text-[#9da3b0] focus:outline-none focus:ring-2 focus:ring-indigo-200 w-[260px] bg-white"
+                className="pl-9 pr-4 py-2 border border-[var(--portal-divider-dark)] rounded-lg text-sm text-[var(--mui-palette-text-primary)] placeholder:text-[var(--mui-palette-text-disabled)] focus:outline-none focus:ring-2 focus:ring-[var(--portal-primary-states-focus-visible)] w-[260px] bg-[var(--mui-palette-background-paper)]"
               />
             </div>
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-[#202938] bg-white hover:bg-gray-50 transition-colors">
-              <SlidersHorizontal size={15} className="text-[#616a7e]" />
+            <button className="flex items-center gap-2 px-4 py-2 border border-[var(--portal-divider-dark)] rounded-lg text-sm font-medium text-[var(--mui-palette-text-primary)] bg-[var(--mui-palette-background-paper)] hover:bg-[var(--portal-primary-states-hover)] transition-colors">
+              <SlidersHorizontal size={15} className="text-[var(--mui-palette-text-secondary)]" />
               Filters
             </button>
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Grid / List icon toggle */}
-            <div className="flex rounded-lg border border-gray-300 overflow-hidden bg-white">
+            <div className="flex rounded-lg border border-[var(--portal-divider-dark)] overflow-hidden bg-[var(--mui-palette-background-paper)]">
               <button
                 onClick={() => setViewMode('grid')}
                 className={`flex items-center justify-center w-10 h-9 transition-colors ${
                   viewMode === 'grid'
-                    ? 'bg-[#1B2454] text-white'
-                    : 'text-[#616a7e] hover:bg-gray-50'
+                    ? 'bg-[var(--mui-palette-primary-main)] text-white'
+                    : 'text-[var(--mui-palette-text-secondary)] hover:bg-[var(--portal-primary-states-hover)]'
                 }`}
               >
                 <LayoutGrid size={16} />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`flex items-center justify-center w-10 h-9 border-l border-gray-300 transition-colors ${
+                className={`flex items-center justify-center w-10 h-9 border-l border-[var(--portal-divider-dark)] transition-colors ${
                   viewMode === 'list'
-                    ? 'bg-[#1B2454] text-white'
-                    : 'text-[#616a7e] hover:bg-gray-50'
+                    ? 'bg-[var(--mui-palette-primary-main)] text-white'
+                    : 'text-[var(--mui-palette-text-secondary)] hover:bg-[var(--portal-primary-states-hover)]'
                 }`}
               >
                 <List size={16} />
@@ -87,35 +86,35 @@ export default function CompanyApps() {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="bg-[var(--mui-palette-background-paper)] rounded-xl border border-[var(--mui-palette-divider)] overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-[#616a7e] uppercase tracking-wide">App Name</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-[#616a7e] uppercase tracking-wide">Champion</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-[#616a7e] uppercase tracking-wide">Users</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-[#616a7e] uppercase tracking-wide">Status</th>
+                <tr className="border-b border-[var(--mui-palette-divider)]">
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)]">App Name</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)]">Champion</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)]">Users</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-[var(--mui-palette-text-secondary)] uppercase tracking-wide bg-[var(--portal-elevation-1)]">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((app) => (
                   <tr
                     key={app.id}
-                    className="border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors"
+                    className="border-b border-[var(--mui-palette-divider)] last:border-0 hover:bg-[var(--portal-primary-states-hover)] transition-colors"
                   >
                     <td className="px-4 py-4">
                       <Link to={`/apps/${app.id}`} className="flex items-center gap-3 no-underline group">
                         <AppLogo name={app.name} logoColor={app.logoColor} size="sm" />
                         <div>
-                          <div className="text-[#202938] font-medium text-sm group-hover:text-indigo-700 transition-colors">
+                          <div className="text-[var(--mui-palette-text-primary)] font-medium text-sm group-hover:text-[var(--mui-palette-primary-main)] transition-colors">
                             {app.name}
                           </div>
-                          <div className="text-[#616a7e] text-xs">{app.vendor}</div>
+                          <div className="text-[var(--mui-palette-text-secondary)] text-xs">{app.vendor}</div>
                         </div>
                       </Link>
                     </td>
-                    <td className="px-4 py-4 text-[#202938] text-sm">{app.primaryChampion}</td>
-                    <td className="px-4 py-4 text-[#616a7e] text-sm">{app.userCount} users</td>
+                    <td className="px-4 py-4 text-[var(--mui-palette-text-primary)] text-sm">{app.primaryChampion}</td>
+                    <td className="px-4 py-4 text-[var(--mui-palette-text-secondary)] text-sm">{app.userCount} users</td>
                     <td className="px-4 py-4">
                       <StatusBadge status={app.status} />
                     </td>
@@ -124,9 +123,9 @@ export default function CompanyApps() {
               </tbody>
             </table>
 
-            <div className="flex items-center justify-end px-4 py-3 border-t border-gray-100">
-              <span className="text-sm text-[#616a7e]">
-                Rows per page: <span className="font-medium text-[#202938]">10 ▾</span>
+            <div className="flex items-center justify-end px-4 py-3 border-t border-[var(--mui-palette-divider)]">
+              <span className="text-sm text-[var(--mui-palette-text-secondary)]">
+                Rows per page: <span className="font-medium text-[var(--mui-palette-text-primary)]">10 ▾</span>
                 &nbsp;&nbsp;1–{Math.min(10, filtered.length)} of {filtered.length}
               </span>
             </div>

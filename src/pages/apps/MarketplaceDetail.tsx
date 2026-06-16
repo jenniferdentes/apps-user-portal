@@ -15,12 +15,12 @@ function IntegrationRow({
 }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="w-7 h-7 rounded-full bg-[#64b5f6] flex items-center justify-center shrink-0">
+      <div className="w-7 h-7 rounded-full bg-[var(--mui-palette-info-main)] flex items-center justify-center shrink-0">
         <Icon size={14} strokeWidth={1.5} className="text-white" />
       </div>
       <div className="flex flex-col gap-0.5">
-        <p className="text-[#202938] font-semibold text-sm leading-[1.57] tracking-[0.1px]">{label}</p>
-        <p className="text-[#616a7e] text-sm leading-[1.43]">{value}</p>
+        <p className="text-[var(--mui-palette-text-primary)] font-semibold text-sm leading-[1.57] tracking-[0.1px]">{label}</p>
+        <p className="text-[var(--mui-palette-text-secondary)] text-sm leading-[1.43]">{value}</p>
       </div>
     </div>
   )
@@ -33,7 +33,7 @@ export default function MarketplaceDetail() {
   if (!app) {
     return (
       <Layout>
-        <div className="flex items-center justify-center h-64 text-[#616a7e]">
+        <div className="flex items-center justify-center h-64 text-[var(--mui-palette-text-secondary)]">
           App not found
         </div>
       </Layout>
@@ -65,24 +65,24 @@ export default function MarketplaceDetail() {
         <nav className="flex items-center gap-1.5 text-sm mb-6">
           <Link
             to="/marketplace"
-            className="text-[#616a7e] hover:text-[#202938] transition-colors no-underline"
+            className="text-[var(--mui-palette-text-secondary)] hover:text-[var(--mui-palette-text-primary)] transition-colors no-underline"
           >
             App Marketplace
           </Link>
           {firstCategory && (
             <>
-              <span className="text-[#9da3b0]">/</span>
-              <span className="text-[#616a7e]">{firstCategory}</span>
+              <span className="text-[var(--mui-palette-text-disabled)]">/</span>
+              <span className="text-[var(--mui-palette-text-secondary)]">{firstCategory}</span>
             </>
           )}
-          <span className="text-[#9da3b0]">/</span>
-          <span className="text-[#202938] font-medium">{app.name}</span>
+          <span className="text-[var(--mui-palette-text-disabled)]">/</span>
+          <span className="text-[var(--mui-palette-text-primary)] font-medium">{app.name}</span>
         </nav>
 
         {/* Header card */}
-        <div className="bg-white rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] p-9 mb-6 flex items-start gap-9">
+        <div className="bg-[var(--mui-palette-background-paper)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] border border-[var(--mui-palette-divider)] p-9 mb-6 flex items-start gap-9">
           <div
-            className="w-[72px] h-[72px] rounded-2xl border-2 border-[#eaecf0] flex items-center justify-center font-bold text-white shrink-0 text-lg"
+            className="w-[72px] h-[72px] rounded-2xl border-2 border-[var(--mui-palette-divider)] flex items-center justify-center font-bold text-white shrink-0 text-lg"
             style={{ backgroundColor: app.logoColor }}
           >
             {getInitials(app.name)}
@@ -91,7 +91,7 @@ export default function MarketplaceDetail() {
           <div className="flex-1 min-w-0 flex flex-col gap-4">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-4">
-                <h1 className="text-[#202938] font-semibold text-2xl leading-tight">{app.name}</h1>
+                <h1 className="text-[var(--mui-palette-text-primary)] font-semibold text-2xl leading-tight">{app.name}</h1>
                 {app.isTopChoice && (
                   <span className="flex items-center gap-1 bg-[#fce4ec] pl-0.5 pr-1.5 py-0.5 rounded-full shrink-0">
                     <span className="w-4 h-4 rounded-full bg-[#f06292] flex items-center justify-center shrink-0">
@@ -103,13 +103,13 @@ export default function MarketplaceDetail() {
                   </span>
                 )}
               </div>
-              <p className="text-[#616a7e] text-base">{app.description}</p>
+              <p className="text-[var(--mui-palette-text-secondary)] text-base">{app.description}</p>
             </div>
             <div className="flex flex-wrap gap-2">
               {(app.categories ?? []).map((cat) => (
                 <span
                   key={cat}
-                  className="flex items-center h-6 px-1.5 rounded-full bg-[rgba(179,157,219,0.4)] text-[#202938] text-[13px] font-medium leading-[22px]"
+                  className="flex items-center h-6 px-1.5 rounded-full bg-[rgba(179,157,219,0.4)] text-[var(--mui-palette-text-primary)] text-[13px] font-medium leading-[22px]"
                 >
                   {cat}
                 </span>
@@ -117,7 +117,7 @@ export default function MarketplaceDetail() {
             </div>
           </div>
 
-          <button className="shrink-0 px-[22px] py-[9px] bg-[#3a3e75] text-white font-medium text-[15px] rounded-lg hover:bg-[#2f3260] transition-colors">
+          <button className="shrink-0 px-[22px] py-[9px] bg-[var(--mui-palette-primary-main)] text-white font-medium text-[15px] rounded-lg hover:bg-[var(--mui-palette-primary-dark)] transition-colors">
             Connect
           </button>
         </div>
@@ -138,21 +138,21 @@ export default function MarketplaceDetail() {
                       border: `1px solid ${app.logoColor}33`,
                     }}
                   >
-                    <span className="text-[#9da3b0] text-sm">Screenshot {i}</span>
+                    <span className="text-[var(--mui-palette-text-disabled)] text-sm">Screenshot {i}</span>
                   </div>
                 ))}
               </div>
-              <button className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-[0px_24px_48px_0px_rgba(16,24,40,0.18)] flex items-center justify-center text-[#202938] hover:bg-gray-50 transition-colors">
+              <button className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[var(--mui-palette-background-paper)] shadow-[0px_24px_48px_0px_rgba(16,24,40,0.18)] flex items-center justify-center text-[var(--mui-palette-text-primary)] hover:bg-[var(--portal-primary-states-hover)] transition-colors">
                 <ChevronRight size={20} strokeWidth={1.5} />
               </button>
             </div>
 
             {/* Overview */}
             <div className="flex flex-col gap-3">
-              <h3 className="text-[#202938] font-semibold text-xl leading-[1.6] tracking-[0.15px]">
+              <h3 className="text-[var(--mui-palette-text-primary)] font-semibold text-xl leading-[1.6] tracking-[0.15px]">
                 Overview
               </h3>
-              <p className="text-[#616a7e] text-[15px] leading-[1.57]">
+              <p className="text-[var(--mui-palette-text-secondary)] text-[15px] leading-[1.57]">
                 {app.overviewText ??
                   `${app.name} is a business application available to your organization. It helps streamline workflows and improve collaboration across departments.\n\nIntegration with CubX allows you to automatically provision accounts for new employees, manage user access, and ensure seamless onboarding and offboarding processes across your organization.`}
               </p>
@@ -160,25 +160,25 @@ export default function MarketplaceDetail() {
 
             {/* How it works */}
             <div className="flex flex-col gap-3">
-              <h3 className="text-[#202938] font-semibold text-xl leading-[1.6] tracking-[0.15px]">
+              <h3 className="text-[var(--mui-palette-text-primary)] font-semibold text-xl leading-[1.6] tracking-[0.15px]">
                 How it works
               </h3>
               <div className="flex flex-col gap-4">
                 {howItWorks.map((item) => (
                   <div
                     key={item.label}
-                    className="bg-white rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] p-4 flex flex-col gap-3"
+                    className="bg-[var(--mui-palette-background-paper)] rounded-xl shadow-[0px_1px_1px_rgba(16,24,40,0.05)] border border-[var(--mui-palette-divider)] p-4 flex flex-col gap-3"
                   >
                     <span
                       className={`self-start inline-flex items-center px-3 py-1.5 rounded-full text-[13px] font-semibold leading-[18px] ${
                         item.type === 'scim'
-                          ? 'bg-[#e3f2fd] text-[#1976d2]'
-                          : 'bg-[#fff3e0] text-[#f57c00]'
+                          ? 'bg-[var(--portal-accent3)] text-[var(--mui-palette-info-main)]'
+                          : 'bg-[var(--portal-accent4)] text-[var(--portal-accent1-dark)]'
                       }`}
                     >
                       {item.label}
                     </span>
-                    <p className="text-[#616a7e] text-base leading-[1.5]">{item.description}</p>
+                    <p className="text-[var(--mui-palette-text-secondary)] text-base leading-[1.5]">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -189,7 +189,7 @@ export default function MarketplaceDetail() {
           <div className="w-[300px] shrink-0 flex flex-col gap-6">
             {/* Integration */}
             <div className="flex flex-col gap-4">
-              <h4 className="text-[#202938] font-semibold text-base leading-[1.75] tracking-[0.15px]">
+              <h4 className="text-[var(--mui-palette-text-primary)] font-semibold text-base leading-[1.75] tracking-[0.15px]">
                 Integration
               </h4>
               <div className="flex flex-col gap-4">
@@ -201,18 +201,18 @@ export default function MarketplaceDetail() {
             </div>
 
             {/* Divider */}
-            <div className="border-t border-[#eaecf0]" />
+            <div className="border-t border-[var(--mui-palette-divider)]" />
 
             {/* Details */}
             <div className="flex flex-col gap-6 px-1">
               {app.pricing && (
                 <div className="flex flex-col gap-1">
-                  <p className="text-[#202938] text-sm font-semibold leading-[1.57] tracking-[0.1px]">Pricing</p>
+                  <p className="text-[var(--mui-palette-text-primary)] text-sm font-semibold leading-[1.57] tracking-[0.1px]">Pricing</p>
                   <a
                     href="#"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-[#3a3e75] no-underline hover:text-[#2f3260] transition-colors"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-[var(--mui-palette-primary-main)] no-underline hover:opacity-75 transition-opacity"
                   >
                     Learn More
                     <ExternalLink size={13} strokeWidth={1.5} />
@@ -221,18 +221,18 @@ export default function MarketplaceDetail() {
               )}
 
               <div className="flex flex-col gap-1">
-                <p className="text-[#202938] text-sm font-semibold leading-[1.57] tracking-[0.1px]">Built by</p>
-                <p className="text-[#616a7e] text-sm leading-[1.43]">{app.builtBy ?? app.vendor}</p>
+                <p className="text-[var(--mui-palette-text-primary)] text-sm font-semibold leading-[1.57] tracking-[0.1px]">Built by</p>
+                <p className="text-[var(--mui-palette-text-secondary)] text-sm leading-[1.43]">{app.builtBy ?? app.vendor}</p>
               </div>
 
               {app.supportUrl && (
                 <div className="flex flex-col gap-1">
-                  <p className="text-[#202938] text-sm font-semibold leading-[1.57] tracking-[0.1px]">Support</p>
+                  <p className="text-[var(--mui-palette-text-primary)] text-sm font-semibold leading-[1.57] tracking-[0.1px]">Support</p>
                   <a
                     href={app.supportUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-[#3a3e75] no-underline hover:text-[#2f3260] transition-colors"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-[var(--mui-palette-primary-main)] no-underline hover:opacity-75 transition-opacity"
                   >
                     Support site
                     <ExternalLink size={13} strokeWidth={1.5} />
@@ -242,14 +242,14 @@ export default function MarketplaceDetail() {
 
               {app.resources && app.resources.length > 0 && (
                 <div className="flex flex-col gap-1">
-                  <p className="text-[#202938] text-sm font-semibold leading-[1.57] tracking-[0.1px]">Resources</p>
+                  <p className="text-[var(--mui-palette-text-primary)] text-sm font-semibold leading-[1.57] tracking-[0.1px]">Resources</p>
                   {app.resources.map((r) => (
                     <a
                       key={r.label}
                       href={r.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium text-[#3a3e75] no-underline hover:text-[#2f3260] transition-colors leading-[24px]"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-[var(--mui-palette-primary-main)] no-underline hover:opacity-75 transition-opacity leading-[24px]"
                     >
                       {r.label}
                       <ExternalLink size={13} strokeWidth={1.5} />

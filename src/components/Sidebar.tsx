@@ -31,18 +31,20 @@ function NavItem({ label, icon: Icon, to, active, expanded }: NavItemProps) {
     <Link to={to} className="no-underline block w-full">
       <div
         className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-          active ? 'bg-[#e8e9f2]' : 'hover:bg-gray-100'
+          active
+            ? 'bg-[var(--portal-primary-states-selected)]'
+            : 'hover:bg-[var(--portal-primary-states-hover)]'
         }`}
       >
         <Icon
           size={22}
           strokeWidth={1.8}
-          className={`shrink-0 ${active ? 'text-[#4338CA]' : 'text-[#616a7e]'}`}
+          className={`shrink-0 ${active ? 'text-[var(--mui-palette-primary-main)]' : 'text-[var(--mui-palette-text-secondary)]'}`}
         />
         {expanded && (
           <span
             className={`text-base font-semibold leading-7 tracking-[0.15px] whitespace-nowrap ${
-              active ? 'text-[#202938]' : 'text-[#616a7e]'
+              active ? 'text-[var(--mui-palette-text-primary)]' : 'text-[var(--mui-palette-text-secondary)]'
             }`}
           >
             {label}
@@ -66,7 +68,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className="fixed left-0 top-0 h-screen bg-white border-r border-gray-200 flex flex-col z-30 overflow-hidden transition-[width] duration-300 ease-in-out"
+      className="fixed left-0 top-0 h-screen bg-[var(--mui-palette-background-paper)] border-r border-[var(--mui-palette-divider)] flex flex-col z-30 overflow-hidden transition-[width] duration-300 ease-in-out"
       style={{ width: expanded ? 238 : 68 }}
     >
       {/* Header */}
@@ -80,7 +82,7 @@ export default function Sidebar() {
             <img src={cubxWordmark} alt="CubX" className="h-8 object-contain" />
             <button
               onClick={toggle}
-              className="flex items-center justify-center w-10 h-10 rounded-md hover:bg-gray-100 transition-colors text-[#616a7e] shrink-0"
+              className="flex items-center justify-center w-10 h-10 rounded-md hover:bg-[var(--portal-primary-states-hover)] transition-colors text-[var(--mui-palette-text-secondary)] shrink-0"
             >
               <PanelLeftClose size={20} strokeWidth={1.5} />
             </button>
@@ -88,7 +90,7 @@ export default function Sidebar() {
         ) : (
           <button
             onClick={toggle}
-            className="flex items-center justify-center w-10 h-10 rounded-md hover:bg-gray-100 transition-colors text-[#616a7e]"
+            className="flex items-center justify-center w-10 h-10 rounded-md hover:bg-[var(--portal-primary-states-hover)] transition-colors text-[var(--mui-palette-text-secondary)]"
           >
             <PanelLeftOpen size={20} strokeWidth={1.5} />
           </button>
@@ -110,36 +112,38 @@ export default function Sidebar() {
               <button
                 onClick={() => setAppsOpen((v) => !v)}
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-                  isAppsActive ? 'bg-[#e8e9f2]' : 'hover:bg-gray-100'
+                  isAppsActive
+                    ? 'bg-[var(--portal-primary-states-selected)]'
+                    : 'hover:bg-[var(--portal-primary-states-hover)]'
                 }`}
               >
                 <LayoutDashboard
                   size={22}
                   strokeWidth={1.8}
-                  className={`shrink-0 ${isAppsActive ? 'text-[#4338CA]' : 'text-[#616a7e]'}`}
+                  className={`shrink-0 ${isAppsActive ? 'text-[var(--mui-palette-primary-main)]' : 'text-[var(--mui-palette-text-secondary)]'}`}
                 />
                 <span
                   className={`flex-1 text-base font-semibold leading-7 tracking-[0.15px] text-left whitespace-nowrap ${
-                    isAppsActive ? 'text-[#202938]' : 'text-[#616a7e]'
+                    isAppsActive ? 'text-[var(--mui-palette-text-primary)]' : 'text-[var(--mui-palette-text-secondary)]'
                   }`}
                 >
                   Apps
                 </span>
                 {appsOpen ? (
-                  <ChevronUp size={16} strokeWidth={2} className="text-[#616a7e] shrink-0" />
+                  <ChevronUp size={16} strokeWidth={2} className="text-[var(--mui-palette-text-secondary)] shrink-0" />
                 ) : (
-                  <ChevronDown size={16} strokeWidth={2} className="text-[#616a7e] shrink-0" />
+                  <ChevronDown size={16} strokeWidth={2} className="text-[var(--mui-palette-text-secondary)] shrink-0" />
                 )}
               </button>
 
               {appsOpen && (
-                <div className="mt-1 ml-[19px] border-l border-[#eaecf0] flex flex-col">
+                <div className="mt-1 ml-[19px] border-l border-[var(--mui-palette-divider)] flex flex-col">
                   <Link
                     to="/my-apps"
                     className={`no-underline flex items-center h-[42px] px-3 rounded-lg transition-colors text-base ${
                       isMyAppsActive
-                        ? 'text-[#202938] font-semibold bg-[#f7f8fc]'
-                        : 'text-[#616a7e] font-normal hover:bg-gray-50'
+                        ? 'text-[var(--mui-palette-text-primary)] font-semibold bg-[var(--portal-elevation-1)]'
+                        : 'text-[var(--mui-palette-text-secondary)] font-normal hover:bg-[var(--portal-primary-states-hover)]'
                     }`}
                   >
                     My Apps
@@ -148,8 +152,8 @@ export default function Sidebar() {
                     to="/apps"
                     className={`no-underline flex items-center h-[42px] px-3 rounded-lg transition-colors text-base ${
                       isCompanyAppsActive
-                        ? 'text-[#202938] font-semibold bg-[#f7f8fc]'
-                        : 'text-[#616a7e] font-normal hover:bg-gray-50'
+                        ? 'text-[var(--mui-palette-text-primary)] font-semibold bg-[var(--portal-elevation-1)]'
+                        : 'text-[var(--mui-palette-text-secondary)] font-normal hover:bg-[var(--portal-primary-states-hover)]'
                     }`}
                   >
                     Company Apps
@@ -158,8 +162,8 @@ export default function Sidebar() {
                     to="/marketplace"
                     className={`no-underline flex items-center h-[42px] px-3 rounded-lg transition-colors text-base ${
                       isMarketplaceActive
-                        ? 'text-[#202938] font-semibold bg-[#f7f8fc]'
-                        : 'text-[#616a7e] font-normal hover:bg-gray-50'
+                        ? 'text-[var(--mui-palette-text-primary)] font-semibold bg-[var(--portal-elevation-1)]'
+                        : 'text-[var(--mui-palette-text-secondary)] font-normal hover:bg-[var(--portal-primary-states-hover)]'
                     }`}
                   >
                     Marketplace
@@ -171,25 +175,27 @@ export default function Sidebar() {
             <button
               onClick={() => navigate('/my-apps')}
               className={`flex items-center justify-center gap-3 px-3 py-2 rounded-md transition-colors w-full ${
-                isAppsActive ? 'bg-[#e8e9f2]' : 'hover:bg-gray-100'
+                isAppsActive
+                  ? 'bg-[var(--portal-primary-states-selected)]'
+                  : 'hover:bg-[var(--portal-primary-states-hover)]'
               }`}
             >
               <LayoutDashboard
                 size={22}
                 strokeWidth={1.8}
-                className={`shrink-0 ${isAppsActive ? 'text-[#4338CA]' : 'text-[#616a7e]'}`}
+                className={`shrink-0 ${isAppsActive ? 'text-[var(--mui-palette-primary-main)]' : 'text-[var(--mui-palette-text-secondary)]'}`}
               />
             </button>
           )}
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200 -mx-4" />
+        <div className="border-t border-[var(--mui-palette-divider)] -mx-4" />
 
         {/* Company Tools */}
         <div className="flex flex-col gap-4">
           {expanded && (
-            <span className="text-[11px] font-semibold text-[#475467] uppercase tracking-wider leading-[18px] px-1">
+            <span className="text-[11px] font-semibold text-[var(--portal-icon-base)] uppercase tracking-wider leading-[18px] px-1">
               Company Tools
             </span>
           )}

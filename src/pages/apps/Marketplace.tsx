@@ -24,17 +24,17 @@ function RequestAppModal({ onClose }: { onClose: () => void }) {
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-xl w-[600px] shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.08),0px_8px_8px_-4px_rgba(16,24,40,0.03)] flex flex-col"
+        className="bg-[var(--mui-palette-background-paper)] rounded-xl w-[600px] shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.08),0px_8px_8px_-4px_rgba(16,24,40,0.03)] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-center justify-between pt-9 px-9 pb-6">
-          <h2 className="text-[#202938] font-semibold text-xl leading-[1.6] tracking-[0.15px]">
+          <h2 className="text-[var(--mui-palette-text-primary)] font-semibold text-xl leading-[1.6] tracking-[0.15px]">
             Request New App
           </h2>
           <button
             onClick={onClose}
-            className="text-[#616a7e] hover:text-[#202938] transition-colors"
+            className="text-[var(--mui-palette-text-secondary)] hover:text-[var(--mui-palette-text-primary)] transition-colors"
           >
             <X size={20} strokeWidth={1.5} />
           </button>
@@ -45,10 +45,10 @@ function RequestAppModal({ onClose }: { onClose: () => void }) {
           {/* Description row */}
           <div className="flex items-start justify-between gap-6">
             <div className="flex flex-col gap-1">
-              <p className="text-[#202938] font-semibold text-base leading-[1.75] tracking-[0.15px]">
+              <p className="text-[var(--mui-palette-text-primary)] font-semibold text-base leading-[1.75] tracking-[0.15px]">
                 Can't find the app you're looking for?
               </p>
-              <p className="text-[#616a7e] text-sm leading-[1.43]">
+              <p className="text-[var(--mui-palette-text-secondary)] text-sm leading-[1.43]">
                 Don't worry, just tell us the name of the app and we'll do our best to get it working for you.
               </p>
             </div>
@@ -60,35 +60,35 @@ function RequestAppModal({ onClose }: { onClose: () => void }) {
           {/* Form fields */}
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
-              <label className="text-[#202938] font-semibold text-sm leading-[1.57] tracking-[0.1px]">
+              <label className="text-[var(--mui-palette-text-primary)] font-semibold text-sm leading-[1.57] tracking-[0.1px]">
                 App Name
               </label>
               <input
                 type="text"
                 placeholder="Placeholder"
-                className="w-full px-3.5 py-2.5 border border-[#d0d5dd] rounded-lg text-base text-[#202938] placeholder:text-[#9aa2b2] shadow-[0px_1px_1px_rgba(16,24,40,0.05)] outline-none focus:border-[#3a3e75] focus:ring-1 focus:ring-[#3a3e75]/20"
+                className="w-full px-3.5 py-2.5 border border-[var(--portal-divider-dark)] rounded-lg text-base text-[var(--mui-palette-text-primary)] placeholder:text-[var(--mui-palette-text-disabled)] shadow-[0px_1px_1px_rgba(16,24,40,0.05)] outline-none focus:border-[var(--mui-palette-primary-main)] focus:ring-1 focus:ring-[var(--portal-primary-states-focus)] bg-[var(--mui-palette-background-paper)]"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-[#202938] font-semibold text-sm leading-[1.57] tracking-[0.1px]">
+              <label className="text-[var(--mui-palette-text-primary)] font-semibold text-sm leading-[1.57] tracking-[0.1px]">
                 Link to app website
               </label>
               <input
                 type="text"
                 placeholder="Placeholder"
-                className="w-full px-3.5 py-2.5 border border-[#d0d5dd] rounded-lg text-base text-[#202938] placeholder:text-[#9aa2b2] shadow-[0px_1px_1px_rgba(16,24,40,0.05)] outline-none focus:border-[#3a3e75] focus:ring-1 focus:ring-[#3a3e75]/20"
+                className="w-full px-3.5 py-2.5 border border-[var(--portal-divider-dark)] rounded-lg text-base text-[var(--mui-palette-text-primary)] placeholder:text-[var(--mui-palette-text-disabled)] shadow-[0px_1px_1px_rgba(16,24,40,0.05)] outline-none focus:border-[var(--mui-palette-primary-main)] focus:ring-1 focus:ring-[var(--portal-primary-states-focus)] bg-[var(--mui-palette-background-paper)]"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-[#202938] font-semibold text-sm leading-[1.57] tracking-[0.1px]">
+              <label className="text-[var(--mui-palette-text-primary)] font-semibold text-sm leading-[1.57] tracking-[0.1px]">
                 Additional information (optional)
               </label>
               <textarea
                 placeholder="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
                 rows={4}
-                className="w-full px-3.5 py-2.5 border border-[#d0d5dd] rounded-lg text-base text-[#202938] placeholder:text-[#9aa2b2] shadow-[0px_1px_1px_rgba(16,24,40,0.05)] outline-none focus:border-[#3a3e75] focus:ring-1 focus:ring-[#3a3e75]/20 resize-none"
+                className="w-full px-3.5 py-2.5 border border-[var(--portal-divider-dark)] rounded-lg text-base text-[var(--mui-palette-text-primary)] placeholder:text-[var(--mui-palette-text-disabled)] shadow-[0px_1px_1px_rgba(16,24,40,0.05)] outline-none focus:border-[var(--mui-palette-primary-main)] focus:ring-1 focus:ring-[var(--portal-primary-states-focus)] resize-none bg-[var(--mui-palette-background-paper)]"
               />
             </div>
           </div>
@@ -98,11 +98,11 @@ function RequestAppModal({ onClose }: { onClose: () => void }) {
         <div className="flex items-center justify-end gap-2 px-9 pt-6 pb-9">
           <button
             onClick={onClose}
-            className="px-4 py-1.5 border border-[rgba(50,55,103,0.3)] rounded-lg text-sm font-medium text-[#333764] hover:bg-gray-50 transition-colors shadow-[0px_1px_2px_rgba(16,24,40,0.05)]"
+            className="px-4 py-1.5 border border-[var(--portal-primary-states-outlined-border)] rounded-lg text-sm font-medium text-[var(--mui-palette-secondary-main)] hover:bg-[var(--portal-primary-states-hover)] transition-colors shadow-[0px_1px_2px_rgba(16,24,40,0.05)]"
           >
             Cancel
           </button>
-          <button className="px-4 py-1.5 bg-[#3a3e75] rounded-lg text-sm font-medium text-white hover:bg-[#2f3260] transition-colors">
+          <button className="px-4 py-1.5 bg-[var(--mui-palette-primary-main)] rounded-lg text-sm font-medium text-white hover:bg-[var(--mui-palette-primary-dark)] transition-colors">
             Send Request
           </button>
         </div>
@@ -160,10 +160,10 @@ export default function Marketplace() {
       <div className="px-6 py-6 w-full">
         {/* Header */}
         <div className="mb-[26px]">
-          <h1 className="text-[#202938] font-semibold text-2xl leading-tight mb-1">
+          <h1 className="text-[var(--mui-palette-text-primary)] font-semibold text-2xl leading-tight mb-1">
             App Marketplace
           </h1>
-          <p className="text-[#616a7e] text-sm">
+          <p className="text-[var(--mui-palette-text-secondary)] text-sm">
             Browse and connect apps for your organization
           </p>
         </div>
@@ -171,16 +171,16 @@ export default function Marketplace() {
         {/* Action bar */}
         <div className="flex items-center gap-3 mb-6">
           <div className="flex-1 relative">
-            <Search size={16} strokeWidth={1.5} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#9da3b0] pointer-events-none" />
+            <Search size={16} strokeWidth={1.5} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--mui-palette-text-disabled)] pointer-events-none" />
             <input
               type="text"
               placeholder="Search apps..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full h-10 pl-9 pr-4 rounded-lg border border-gray-200 bg-white text-sm text-[#202938] placeholder:text-[#9da3b0] outline-none focus:border-[#d0d3e8] focus:ring-1 focus:ring-[#d0d3e8]"
+              className="w-full h-10 pl-9 pr-4 rounded-lg border border-[var(--mui-palette-divider)] bg-[var(--mui-palette-background-paper)] text-sm text-[var(--mui-palette-text-primary)] placeholder:text-[var(--mui-palette-text-disabled)] outline-none focus:border-[var(--portal-secondary-outlined-border)] focus:ring-1 focus:ring-[var(--portal-primary-states-focus)]"
             />
           </div>
-          <button className="h-10 flex items-center gap-2 px-4 rounded-lg border border-gray-200 bg-white text-sm font-medium text-[#323767] hover:bg-gray-50 transition-colors shadow-[0px_1px_2px_rgba(16,24,40,0.05)] shrink-0">
+          <button className="h-10 flex items-center gap-2 px-4 rounded-lg border border-[var(--mui-palette-divider)] bg-[var(--mui-palette-background-paper)] text-sm font-medium text-[var(--mui-palette-secondary-main)] hover:bg-[var(--portal-primary-states-hover)] transition-colors shadow-[0px_1px_2px_rgba(16,24,40,0.05)] shrink-0">
             <SlidersHorizontal size={16} strokeWidth={1.5} />
             Filters
           </button>
@@ -190,7 +190,7 @@ export default function Marketplace() {
         <div className="flex gap-6">
           {/* Categories sidebar */}
           <div className="w-[235px] shrink-0 flex flex-col">
-            <p className="text-[#202938] font-semibold text-sm mb-2">Categories</p>
+            <p className="text-[var(--mui-palette-text-primary)] font-semibold text-sm mb-2">Categories</p>
             <div className="flex flex-col overflow-y-auto">
               {CATEGORIES.map((cat) => (
                 <button
@@ -198,8 +198,8 @@ export default function Marketplace() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`h-[38px] flex items-center px-2 rounded-lg text-base text-left w-full transition-colors ${
                     selectedCategory === cat
-                      ? 'font-semibold text-[#202938]'
-                      : 'font-normal text-[#616a7e] hover:text-[#202938]'
+                      ? 'font-semibold text-[var(--mui-palette-text-primary)]'
+                      : 'font-normal text-[var(--mui-palette-text-secondary)] hover:text-[var(--mui-palette-text-primary)]'
                   }`}
                 >
                   {cat}
@@ -214,7 +214,6 @@ export default function Marketplace() {
                   'linear-gradient(-69.04deg, rgba(255,255,255,0) 1.44%, rgba(255,255,255,0.1) 100%), linear-gradient(90deg, #b388ff 0%, #b388ff 100%)',
               }}
             >
-              {/* Decorative magnifier icon */}
               <div className="absolute pointer-events-none" style={{ top: -22, right: -2 }}>
                 <MagnifierIcon />
               </div>
@@ -235,7 +234,7 @@ export default function Marketplace() {
           {/* App grid */}
           <div className="flex-1 min-w-0">
             {selectedCategory !== 'All Apps' && (
-              <h2 className="text-[#202938] font-semibold text-xl mb-4">
+              <h2 className="text-[var(--mui-palette-text-primary)] font-semibold text-xl mb-4">
                 {selectedCategory} Apps
               </h2>
             )}
@@ -245,12 +244,12 @@ export default function Marketplace() {
                   <div
                     key={app.id}
                     onClick={() => navigate(`/marketplace/${app.id}`)}
-                    className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-4 shadow-[0px_1px_3px_rgba(16,24,40,0.07),0px_1px_3.5px_rgba(16,24,40,0.04)] hover:shadow-[0px_4px_6px_-2px_rgba(16,24,40,0.03),0px_12px_16px_-4px_rgba(16,24,40,0.08)] transition-shadow duration-200 cursor-pointer"
+                    className="bg-[var(--mui-palette-background-paper)] rounded-xl border border-[var(--mui-palette-divider)] p-5 flex flex-col gap-4 shadow-[0px_1px_3px_rgba(16,24,40,0.07),0px_1px_3.5px_rgba(16,24,40,0.04)] hover:shadow-[0px_4px_6px_-2px_rgba(16,24,40,0.03),0px_12px_16px_-4px_rgba(16,24,40,0.08)] transition-shadow duration-200 cursor-pointer"
                   >
                     {/* Logo + Top Choice badge */}
                     <div className="flex items-start justify-between gap-2">
                       <div
-                        className="w-[60px] h-[60px] rounded-xl flex items-center justify-center font-bold text-white shrink-0 border border-[#eaecf0] text-sm"
+                        className="w-[60px] h-[60px] rounded-xl flex items-center justify-center font-bold text-white shrink-0 border border-[var(--mui-palette-divider)] text-sm"
                         style={{ backgroundColor: app.logoColor }}
                       >
                         {getInitials(app.name)}
@@ -269,10 +268,10 @@ export default function Marketplace() {
 
                     {/* Name + description */}
                     <div className="flex flex-col gap-2">
-                      <p className="text-[#202938] font-semibold text-base leading-[1.75] tracking-[0.15px]">
+                      <p className="text-[var(--mui-palette-text-primary)] font-semibold text-base leading-[1.75] tracking-[0.15px]">
                         {app.name}
                       </p>
-                      <p className="text-[#616a7e] text-sm leading-[1.43]">
+                      <p className="text-[var(--mui-palette-text-secondary)] text-sm leading-[1.43]">
                         {app.description ?? ''}
                       </p>
                     </div>
@@ -283,7 +282,7 @@ export default function Marketplace() {
                         {(app.categories ?? []).map((cat) => (
                           <span
                             key={cat}
-                            className="flex items-center h-6 px-1.5 rounded-full bg-[rgba(179,157,219,0.4)] text-[#202938] text-[13px] font-medium leading-[22px]"
+                            className="flex items-center h-6 px-1.5 rounded-full bg-[rgba(179,157,219,0.4)] text-[var(--mui-palette-text-primary)] text-[13px] font-medium leading-[22px]"
                           >
                             {cat}
                           </span>
@@ -294,7 +293,7 @@ export default function Marketplace() {
                 ))}
               </div>
             ) : (
-              <div className="flex items-center justify-center h-48 text-[#616a7e]">
+              <div className="flex items-center justify-center h-48 text-[var(--mui-palette-text-secondary)]">
                 No apps found
               </div>
             )}

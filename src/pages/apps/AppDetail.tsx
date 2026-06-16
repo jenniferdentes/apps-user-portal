@@ -20,7 +20,7 @@ export default function AppDetail() {
   if (!app) {
     return (
       <Layout>
-        <div className="flex items-center justify-center h-64 text-[#616a7e]">
+        <div className="flex items-center justify-center h-64 text-[var(--mui-palette-text-secondary)]">
           App not found
         </div>
       </Layout>
@@ -32,29 +32,29 @@ export default function AppDetail() {
       <div className="px-6 py-6 w-full">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-sm mb-6">
-          <Link to="/apps" className="text-[#616a7e] hover:text-[#202938] transition-colors no-underline">
+          <Link to="/apps" className="text-[var(--mui-palette-text-secondary)] hover:text-[var(--mui-palette-text-primary)] transition-colors no-underline">
             Apps
           </Link>
-          <span className="text-[#9da3b0]">/</span>
-          <Link to="/apps" className="text-[#616a7e] hover:text-[#202938] transition-colors no-underline">
+          <span className="text-[var(--mui-palette-text-disabled)]">/</span>
+          <Link to="/apps" className="text-[var(--mui-palette-text-secondary)] hover:text-[var(--mui-palette-text-primary)] transition-colors no-underline">
             Company Apps
           </Link>
-          <span className="text-[#9da3b0]">/</span>
-          <span className="text-[#202938] font-medium">{app.name}</span>
+          <span className="text-[var(--mui-palette-text-disabled)]">/</span>
+          <span className="text-[var(--mui-palette-text-primary)] font-medium">{app.name}</span>
         </nav>
 
         {/* App header card */}
-        <div className="bg-white rounded-xl border border-gray-200 px-6 py-5 mb-4">
+        <div className="bg-[var(--mui-palette-background-paper)] rounded-xl border border-[var(--mui-palette-divider)] px-6 py-5 mb-4">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-4">
               <AppLogo name={app.name} logoColor={app.logoColor} />
               <div>
-                <h1 className="text-[#202938] font-semibold text-xl leading-tight">{app.name}</h1>
-                <p className="text-[#616a7e] text-sm">{app.vendor}</p>
+                <h1 className="text-[var(--mui-palette-text-primary)] font-semibold text-xl leading-tight">{app.name}</h1>
+                <p className="text-[var(--mui-palette-text-secondary)] text-sm">{app.vendor}</p>
               </div>
             </div>
             <div className="flex flex-col items-end gap-1.5">
-              <span className="flex items-center gap-1.5 text-[#616a7e] text-xs">
+              <span className="flex items-center gap-1.5 text-[var(--mui-palette-text-secondary)] text-xs">
                 <RefreshCw size={14} strokeWidth={1.5} />
                 {app.lastSync}
               </span>
@@ -64,7 +64,7 @@ export default function AppDetail() {
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-gray-200 mb-6">
+        <div className="border-b border-[var(--mui-palette-divider)] mb-6">
           <div className="flex gap-0">
             {(['overview', 'users', 'settings'] as Tab[]).map((t) => (
               <button
@@ -72,8 +72,8 @@ export default function AppDetail() {
                 onClick={() => setTab(t)}
                 className={`px-5 py-3 text-sm font-medium capitalize transition-colors border-b-2 -mb-px ${
                   tab === t
-                    ? 'border-[#1B2454] text-[#1B2454]'
-                    : 'border-transparent text-[#616a7e] hover:text-[#202938]'
+                    ? 'border-[var(--mui-palette-primary-main)] text-[var(--mui-palette-primary-main)]'
+                    : 'border-transparent text-[var(--mui-palette-text-secondary)] hover:text-[var(--mui-palette-text-primary)]'
                 }`}
               >
                 {t.charAt(0).toUpperCase() + t.slice(1)}

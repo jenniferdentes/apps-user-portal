@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   const { expanded } = useSidebar()
 
   return (
-    <div className="min-h-screen bg-[#f5f6fa]">
+    <div className="min-h-screen bg-[var(--portal-bg-strong)]">
       <Sidebar />
       <Header />
       <main
