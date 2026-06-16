@@ -115,8 +115,8 @@ const portalTheme = createTheme({
           disabled:  '#98a1b2',
         },
         background: {
-          default: '#222629',
-          paper:   '#15191c',
+          default: '#15191c',
+          paper:   '#222629',
         },
         divider: '#313538',
         action: {
@@ -199,8 +199,8 @@ const portalTheme = createTheme({
           '--portal-color-new-blue':'#3c91ff',
         },
         '.dark': {
-          '--portal-bg-default':    '#222629',
-          '--portal-bg-paper':      '#15191c',
+          '--portal-bg-default':    '#15191c',
+          '--portal-bg-paper':      '#222629',
           '--portal-divider':       '#313538',
           '--portal-elevation-1':   '#15191c',
           '--portal-bg-strong':     '#0f1214',
